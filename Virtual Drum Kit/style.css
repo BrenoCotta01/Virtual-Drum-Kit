@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #151637;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: #ccbaba;
+  margin-bottom: 20px;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 10px;
+  max-width: 400px;
+  width: 100%;
+  justify-content: center;
+}
+
+.key {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #d80edb;
+  color: rgb(228, 167, 225);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+  overflow: visible;
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.key img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  object-fit: cover;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.key.shake img {
+  animation: shake 0.1s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.key .letter {
+  position: absolute;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+}
+
+.letter {
+  opacity: 0.7;
+}
+
+.key.active {
+  border: 2px solid rgb(147, 8, 103);
+  color: rgb(255, 0, 174);
+}
+
+.key.active .letter,
+.key.active > span,
+.key.active > div {
+  color: rgb(135, 44, 158);
+}
+
+.composer {
+  width: 300px;
+  margin-top: 30px;
+}
+
+.composer #input {
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding: 10px 15px;
+}
+
+.composer button {
+  width: 100%;
+  height: 40px;
+  background: none;
+  border: 2px solid #f1afe8;
+  color: #ea17ab;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.composer button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  margin-top: 20px;
+  color: #e100ff;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .keys {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .key {
+    width: 90px;
+    height: 90px;
+  }
+
+  .key .letter,
+  .key > span,
+  .key > div {
+    top: -25px;
+    font-size: 22px;
+  }
+}
